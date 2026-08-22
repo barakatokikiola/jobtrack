@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { Lock, Mail } from "lucide-react";
 
 export function LoginForm() {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -49,7 +50,7 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-6">
         <FormField
           control={form.control}
           name="email"
@@ -58,7 +59,15 @@ export function LoginForm() {
               <FormLabel>Email</FormLabel>
 
               <FormControl>
-                <Input type="email" placeholder="john@example.com" {...field} />
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    type="email"
+                    placeholder="john@example.com"
+                    className="pl-10"
+                    {...field}
+                  />
+                </div>
               </FormControl>
 
               <FormMessage />
@@ -74,7 +83,10 @@ export function LoginForm() {
               <FormLabel>Password</FormLabel>
 
               <FormControl>
-                <Input type="password" placeholder="••••••••" {...field} />
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input type="password" placeholder="••••••••" {...field} className="pl-10" />
+                </div>
               </FormControl>
 
               <FormMessage />
@@ -88,7 +100,7 @@ export function LoginForm() {
 
         <Button
           type="submit"
-          className="w-full"
+          className="w-full bg-navy rounded"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting ? "Signing in..." : "Sign in"}

@@ -18,6 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Lock, Mail, User} from "lucide-react";
 
 export function SignupForm() {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -71,7 +72,11 @@ export function SignupForm() {
             <FormItem>
               <FormLabel>Full name</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+               <div className="relative">
+                 <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+
+                <Input placeholder="John Doe" {...field} className="pl-10" />
+               </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -85,7 +90,16 @@ export function SignupForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="john@example.com" {...field} />
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+
+                  <Input
+                    type="email"
+                    placeholder="john@example.com"
+                    className="pl-10"
+                    {...field}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -99,7 +113,11 @@ export function SignupForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" {...field} />
+                 <div className="relative">
+                 <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+
+                <Input type="password" placeholder="••••••••" {...field} className="pl-10" />
+               </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -112,7 +130,7 @@ export function SignupForm() {
 
         <Button
           type="submit"
-          className="w-full"
+          className="w-full bg-navy text-white hover:bg-navy-dark"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting

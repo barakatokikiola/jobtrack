@@ -4,7 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme inline {
+    --color-brand: #e07b3a;
+    --color-navy: #1a1a2e;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
