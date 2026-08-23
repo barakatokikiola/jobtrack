@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
 import AppSidebar from "@/features/(protected)/shared/AppSideBar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppNavBar } from "@/features/(protected)/shared/AppNavBar";
 import { ReactNode } from "react";
+
+import MobileHeader from "@/features/(protected)/shared/MobileHeader";
 export default function AppLayout({
   children,
   modal,
@@ -11,20 +13,17 @@ export default function AppLayout({
   children: ReactNode;
   modal: ReactNode;
 }) {
-
   return (
-  
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset className="min-w-0">
-         
-          <main className="min-h-screen min-w-0 flex-1 overflow-x-hidden bg-[#F8FAFC]">
+    <SidebarProvider>
+      <AppSidebar />
+      <div className="flex min-h-screen flex-1 flex-col">
+        <MobileHeader/>
+        <main className="min-h-screen min-w-0 flex-1 overflow-x-hidden bg-[#F8FAFC]">
             <AppNavBar />
-            {children}
-          </main>
-        </SidebarInset>
-        {modal}
-      </SidebarProvider>
-
+          {children}
+        </main>
+      </div>
+      {modal}
+    </SidebarProvider>
   );
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
@@ -85,18 +85,12 @@ export default function AppSidebar() {
   const pathname = usePathname();
 
   const { user: currentUser } = useUser();
-  const { open, isMobile, setOpenMobile } = useSidebar();
+  const { open } = useSidebar();
 
   const [accountSummary, setAccountSummary] = useState<AccountSummary>({
     fullName: "Barakat",
     initials: "B",
   });
-
-  useEffect(() => {
-    if (isMobile) {
-      setOpenMobile(false);
-    }
-  }, [pathname, isMobile, setOpenMobile]);
 
   const isActiveRoute = (href: string) => {
     if (href === "/dashboard") {
@@ -110,14 +104,14 @@ export default function AppSidebar() {
     <Sidebar collapsible="icon" className="border-r border-gray-100 bg-white">
       {/* Header */}
       <SidebarHeader
-        className={`${open || isMobile ? "px-5 py-3" : "px-2 py-3"}`}
+        className={`${open ? "px-5 py-3" : "px-2 py-3"}`}
       >
         <SidebarMenuItem
           className={`flex items-center gap-2 ${
-            open || isMobile ? "justify-between" : "justify-center"
+            open  ? "justify-between" : "justify-center"
           }`}
         >
-          {open || isMobile ? (
+          {open ? (
             <Link href="/" className="flex items-center gap-2">
               <LogoMark />
               <span className="text-[15px] font-bold text-navy">JobTrack</span>
@@ -168,7 +162,7 @@ export default function AppSidebar() {
           <DropdownMenuTrigger
             data-tour="profile-menu"
             className={`flex w-full items-center gap-3 rounded-xl border border-gray-100 bg-white p-2 text-left transition hover:border-blue-100 hover:bg-blue-50/60 ${
-              !open && !isMobile ? "justify-center" : ""
+              !open ? "justify-center" : ""
             }`}
             aria-label="Open account menu"
           >
@@ -185,7 +179,7 @@ export default function AppSidebar() {
               </AvatarFallback>
             </Avatar>
 
-            {(open || isMobile) && (
+            {(open) && (
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-semibold text-gray-900">
                   {accountSummary.fullName}
