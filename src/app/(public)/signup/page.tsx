@@ -1,7 +1,19 @@
+import { redirect } from "next/navigation";
 import SideBar from "@/features/auth/components/SideBar";
 import { SignupForm } from "@/features/auth/components/SignupForm";
+import { createClient } from "@/lib/supabase/server";
 
-export default function SignupPage() {
+export default async function SignupPage() {
+
+  const supabase = await createClient()
+
+  const {data: {user}} = await supabase.auth.getUser()
+
+  if (user) {
+    redirect("/dashboard")
+  }
+
+
   return (
    
 

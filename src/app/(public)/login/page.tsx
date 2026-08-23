@@ -1,7 +1,18 @@
 import { LoginForm } from "@/features/auth/components/LoginForm";
 import SideBar from "@/features/auth/components/SideBar";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    redirect("/dashboard");
+  }
   return (
     <main className="min-h-screen ">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 mx-auto">
