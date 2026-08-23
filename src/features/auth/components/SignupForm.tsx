@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Lock, Mail, User} from "lucide-react";
+import Link from "next/link";
 
 export function SignupForm() {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -55,7 +56,8 @@ export function SignupForm() {
   }
 
   return (
-    <Form {...form}>
+  <div>
+      <Form {...form}>
       {success && (
         <div className="rounded-md border p-4 text-sm">
           <p className="font-medium">Account created successfully!</p>
@@ -138,6 +140,13 @@ export function SignupForm() {
             : "Create account"}
         </Button>
       </form>
+   
     </Form>
+      <div className="mt-8 text-center">
+         <Link href="/login" className="text-sm text-navy hover:underline hover:text-brand font-medium">
+        Already have an account? Sign in
+      </Link>
+      </div>
+  </div>
   );
 }

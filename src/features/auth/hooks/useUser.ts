@@ -17,6 +17,7 @@ export function useUser() {
       } = await supabase.auth.getUser();
 
       setUser(user);
+    
       setLoading(false);
     }
 

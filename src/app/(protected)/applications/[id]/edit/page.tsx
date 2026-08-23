@@ -11,7 +11,6 @@ export default function EditApplicationPage() {
   const id = params.id;
 
   const { user, loading: userLoading } = useUser();
-
   const {
     data: application,
     isLoading: applicationLoading,

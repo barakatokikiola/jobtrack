@@ -9,7 +9,7 @@ const NAV_LINKS = [
 
 export function Navbar() {
   return (
-    <header className="flex items-center justify-between px-5 py-4 sm:px-8">
+    <header className="flex items-center justify-between px-5 py-2.5 sm:px-8">
       <Link href="#top" className="flex items-center gap-2">
         <LogoMark />
         <span className="text-[15px] font-bold text-navy">JobTrack</span>

@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My App",
+  title: "JobDoor - Track your job applications",
   description: "Created by Barakat",
 };
 

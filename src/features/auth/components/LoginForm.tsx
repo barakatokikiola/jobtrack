@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import Link from "next/link";
 import { loginSchema, type LoginFormData } from "../schemas/auth.schema";
 import { login } from "../services/auth.service";
 
@@ -49,8 +49,9 @@ export function LoginForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-6">
+   <div>
+     <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="email"
@@ -107,5 +108,12 @@ export function LoginForm() {
         </Button>
       </form>
     </Form>
+
+       <div className="mt-8 text-center">
+         <Link href="/signup" className="text-sm text-navy hover:underline hover:text-brand font-medium">
+        No account? Sign up
+      </Link>
+      </div>
+   </div>
   );
 }
