@@ -11,7 +11,7 @@ import {
   Bookmark,
   BarChart3,
 } from "lucide-react";
-
+import { logout } from "@/features/auth/services/auth.service";
 import {
   Sidebar,
   SidebarContent,
@@ -25,6 +25,8 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -38,7 +40,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { useUser } from "@/features/auth/hooks/useUser";
 import { LogoMark } from "@/features/landing-page/components/icons";
-import { LogoutButton } from "@/features/auth/components/LogoutButton";
 
 type NavItem = {
   label: string;
@@ -87,6 +88,9 @@ export default function AppSidebar() {
   const { user: currentUser } = useUser();
   const { open } = useSidebar();
 
+    const router = useRouter();
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
+
   const [accountSummary, setAccountSummary] = useState<AccountSummary>({
     fullName: "Barakat",
     initials: "B",
@@ -99,7 +103,23 @@ export default function AppSidebar() {
 
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+ async function handleLogout() {
+    try {
+      setIsLoggingOut(true);
 
+      await logout();
+
+      toast.success("Successfully Logged out", {
+          description: "Your are logged out successfully.",
+          position: "top-right",
+        });
+      router.push("/login");
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+      setIsLoggingOut(false);
+    }
+  }
   return (
     <Sidebar collapsible="icon" className="border-r border-gray-100 bg-white">
       {/* Header */}
@@ -226,8 +246,8 @@ export default function AppSidebar() {
 
             <DropdownMenuSeparator className="my-2 bg-gray-100" />
 
-            <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-error focus:bg-red-50 focus:text-red-700">
-              <LogoutButton />
+            <DropdownMenuItem onClick={handleLogout} className="capitalize border cursor-pointer rounded-lg px-3 py-2 text-sm text-error focus:bg-red-50 focus:text-red-700">
+              {isLoggingOut ? "Signing out..." : "Sign out"}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

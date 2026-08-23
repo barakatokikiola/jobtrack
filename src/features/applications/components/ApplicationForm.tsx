@@ -31,6 +31,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 import type { Application } from "../types/application.types";
+import { toast } from "sonner";
 
 type ApplicationFormProps = {
   userId: string;
@@ -92,6 +93,13 @@ export function ApplicationForm({ userId, application }: ApplicationFormProps) {
         },
         {
           onSuccess: () => {
+             toast.success(
+              "Application updated",
+              {
+                description: "Application successfully updated",
+                position: "top-right"
+              }
+            );
             router.push(`/applications/${application.id}`);
             router.refresh();
           },
@@ -108,6 +116,13 @@ export function ApplicationForm({ userId, application }: ApplicationFormProps) {
       },
       {
         onSuccess: () => {
+           toast.success(
+              "Application created",
+              {
+                description: "Application successfully created",
+                position: "top-right"
+              }
+            );
           form.reset();
           router.push("/applications");
           router.refresh();
