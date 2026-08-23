@@ -1,14 +1,33 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { useApplications } from "../hooks/useApplications";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+
+const getStatusStyles = (status: string) => {
+  switch (status.toLowerCase()) {
+    case "applied":
+      return "bg-blue-600 text-white border-blue-200";
+
+    case "interviewing":
+      return "bg-purple-600 text-purple-50 border-purple-200";
+
+    case "offer":
+      return "bg-green-700 text-green-50 border-green-200";
+
+    case "rejected":
+      return "bg-red-700 text-red-50 border-red-200";
+
+    case "saved":
+      return "bg-yellow-50 text-yellow-700 border-yellow-200";
+
+    default:
+      return "bg-gray-50 text-gray-700 border-gray-200";
+  }
+};
+
 export function ApplicationsList() {
-  const {
-    data: applications,
-    isLoading,
-    isError,
-    error,
-  } = useApplications();
+  const { data: applications, isLoading, isError, error } = useApplications();
   const router = useRouter();
 
   if (isLoading) {
@@ -47,24 +66,22 @@ export function ApplicationsList() {
         >
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="font-semibold">
-                {application.position}
-              </h2>
+              <h2 className="font-semibold">{application.position}</h2>
 
               <p className="text-sm text-muted-foreground">
                 {application.company}
               </p>
             </div>
 
-            <span className="rounded-full border px-3 py-1 text-xs capitalize">
+            <Badge
+              className={`${getStatusStyles(application.status)} rounded-full px-3 py-1 text-xs capitalize`}
+            >
               {application.status}
-            </span>
+            </Badge>
           </div>
 
           {application.location && (
-            <p className="mt-3 text-sm">
-              {application.location}
-            </p>
+            <p className="mt-3 text-sm">{application.location}</p>
           )}
         </article>
       ))}

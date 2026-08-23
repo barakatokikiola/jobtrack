@@ -1,9 +1,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import { BookmarkIcon, CalendarIcon, Briefcase } from "lucide-react";
-import StatCard from "./StatCard";
 import Stats from "./Stats";
+import { ApplicationsList } from "@/features/applications/components/ApplicationsList";
 
 export default async function Dashboard() {
   const supabase = await createClient();
@@ -51,6 +50,8 @@ export default async function Dashboard() {
       </div>
 
       <Stats/>
+
+      <ApplicationsList/>
     </main>
   );
 }
