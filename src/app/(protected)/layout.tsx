@@ -8,10 +8,8 @@ import { ReactNode } from "react";
 import MobileHeader from "@/features/(protected)/shared/MobileHeader";
 export default function AppLayout({
   children,
-  modal,
 }: {
   children: ReactNode;
-  modal: ReactNode;
 }) {
   return (
     <SidebarProvider>
@@ -23,7 +21,6 @@ export default function AppLayout({
           {children}
         </main>
       </div>
-      {modal}
     </SidebarProvider>
   );
 }
