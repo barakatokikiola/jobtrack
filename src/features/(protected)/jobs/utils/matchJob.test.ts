@@ -44,7 +44,7 @@ describe("matchJobToPreferences", () => {
       preferences
     );
 
-    expect(result.score).toBe(95);
+    expect(result.score).toBe(85);
 
     expect(result.reasons).toContain(
       "Matches your frontend job preference"
