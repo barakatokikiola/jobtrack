@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ApplicationDetails from "./ApplicationDetail";
@@ -17,11 +16,11 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@/features/applications/hooks/useApplication", () => ({
+vi.mock("@/features/(protected)/applications/hooks/useApplication", () => ({
   useApplication: (...args: unknown[]) => mockUseApplication(...args),
 }));
 
-vi.mock("@/features/applications/hooks/useDeleteApplication", () => ({
+vi.mock("@/features/(protected)/applications/hooks/useDeleteApplication", () => ({
   useDeleteApplication: () => ({
     mutate: mockDeleteApplication,
     isPending: false,

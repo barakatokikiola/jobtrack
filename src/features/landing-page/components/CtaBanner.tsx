@@ -16,13 +16,13 @@ export function CtaBanner() {
       <div className="flex shrink-0 items-center gap-3">
         <Link
           href="/signup"
-          className="rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+          className="rounded-lg bg-brand px-5 py-2.5  text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
         >
           Get started for free
         </Link>
         <Link
           href="/login"
-          className="flex items-center gap-1.5 rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/5"
+          className="flex items-center gap-1.5 rounded-lg border border-white/15 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-white/5"
         >
          
           Log in

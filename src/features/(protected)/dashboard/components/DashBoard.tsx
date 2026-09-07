@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Stats from "./Stats";
-import { ApplicationsList } from "@/features/applications/components/ApplicationsList";
+import { ApplicationsList } from "@/features/(protected)/applications/components/ApplicationsList";
 
 export default async function Dashboard() {
   const supabase = await createClient();
@@ -16,7 +16,6 @@ export default async function Dashboard() {
     redirect("/login");
   }
 
- 
   return (
     <main className="bg-brand-bg min-h-screen space-y-6 p-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -39,12 +38,14 @@ export default async function Dashboard() {
           </p>
         </div>
 
-        
+        <Link href="/jobs/preferences" className="rounded-lg border border-white/15 px-4 py-2 text-sm font-medium text-white bg-brand hover:bg-navy w-fit">
+          Job Preferences
+        </Link>
       </div>
 
-      <Stats/>
+      <Stats />
 
-      <ApplicationsList/>
+      <ApplicationsList />
     </main>
   );
 }

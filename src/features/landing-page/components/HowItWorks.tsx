@@ -25,7 +25,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="rounded-2xl border border-navy/[0.06] bg-white p-6 sm:p-8"
+      className="rounded-2xl border border-navy/6 bg-white p-6 sm:p-8"
     >
       <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
         How it works

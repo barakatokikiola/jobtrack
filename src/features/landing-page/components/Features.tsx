@@ -1,36 +1,38 @@
+import { ChartColumn, FilePenLine, FolderClosed, Lock, RefreshCw, Zap } from "lucide-react";
+
 const FEATURES = [
   {
-    icon: "📁",
+    icon: <FolderClosed className="text-brand" />,
     title: "Track every application",
     description: "Log jobs as you apply. Never lose track of where you applied.",
     dark: false,
   },
   {
-    icon: "🔄",
+    icon: <RefreshCw />,
     title: "Manage stages",
     description: "Applied → Interview → Offer — update in one click.",
     dark: true,
   },
   {
-    icon: "📝",
+    icon: <FilePenLine className="text-brand"/>,
     title: "Rich notes",
     description: "Add contacts, salary info, and prep notes per job.",
     dark: false,
   },
   {
-    icon: "📊",
+    icon: <ChartColumn/>,
     title: "Progress overview",
     description: "See your response rate, active interviews, and offers at a glance.",
     dark: false,
   },
   {
-    icon: "🔒",
+    icon: <Lock className="text-brand"/>,
     title: "Private & secure",
     description: "Row-level security via Supabase. Only you see your data.",
     dark: true,
   },
   {
-    icon: "⚡",
+    icon: <Zap />,
     title: "Instant updates",
     description: "React Query keeps your data fresh with no full reloads.",
     dark: false,
@@ -50,7 +52,7 @@ export function Features() {
           className={`rounded-2xl p-5 ${
             feature.dark
               ? "bg-navy text-white"
-              : "border border-navy/[0.06] bg-white text-navy"
+              : "border border-navy/6 bg-white text-navy"
           }`}
         >
           <span className="text-2xl" aria-hidden="true">

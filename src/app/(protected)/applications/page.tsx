@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ApplicationsList } from "@/features/applications/components/ApplicationsList";
+import { ApplicationsList } from "@/features/(protected)/applications/components/ApplicationsList";
 import { useRouter } from "next/navigation";
 
 export default function ApplicationsPage() {

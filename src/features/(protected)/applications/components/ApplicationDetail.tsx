@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter, useParams } from "next/navigation";
-import { useApplication } from "@/features/applications/hooks/useApplication";
-import { useDeleteApplication } from "@/features/applications/hooks/useDeleteApplication";
+import { useApplication } from "@/features/(protected)/applications/hooks/useApplication";
+import { useDeleteApplication } from "@/features/(protected)/applications/hooks/useDeleteApplication";
 
 export default function ApplicationDetails() {
   const params = useParams<{ id: string }>();

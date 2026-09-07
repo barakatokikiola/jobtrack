@@ -2,8 +2,8 @@
 
 import { useParams } from "next/navigation";
 
-import { ApplicationForm } from "@/features/applications/components/ApplicationForm";
-import { useApplication } from "@/features/applications/hooks/useApplication";
+import { ApplicationForm } from "@/features/(protected)/applications/components/ApplicationForm";
+import { useApplication } from "@/features/(protected)/applications/hooks/useApplication";
 import { useUser } from "@/features/auth/hooks/useUser";
 
 export default function EditApplicationPage() {

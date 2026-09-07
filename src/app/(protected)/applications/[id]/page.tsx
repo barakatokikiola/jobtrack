@@ -1,4 +1,4 @@
-import ApplicationDetails from "@/features/applications/components/ApplicationDetail";
+import ApplicationDetails from "@/features/(protected)/applications/components/ApplicationDetail";
 
 export default function ApplicationDetailsPage() {
   return <ApplicationDetails />;

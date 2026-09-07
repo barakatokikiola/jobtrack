@@ -1,4 +1,4 @@
-import { getApplications } from "@/features/applications/services/applications.service";
+import { getApplications } from "@/features/(protected)/applications/services/applications.service";
 import { useQuery } from "@tanstack/react-query";
 
 

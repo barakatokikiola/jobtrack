@@ -1,6 +1,6 @@
 "use client";
 
-import { ApplicationForm } from "@/features/applications/components/ApplicationForm";
+import { ApplicationForm } from "@/features/(protected)/applications/components/ApplicationForm";
 import { useUser } from "@/features/auth/hooks/useUser";
 
 export default function NewApplicationPage() {
