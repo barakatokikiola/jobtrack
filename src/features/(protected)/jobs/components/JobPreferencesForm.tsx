@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useUser } from "@/features/auth/hooks/useUser";
+import { useRouter } from "next/navigation";
 import {
   createJobPreferences,
   getJobPreferences,
@@ -14,6 +15,7 @@ const categories = ["frontend", "ai", "backend", "fullstack"];
 const workModes = ["remote", "hybrid", "onsite"];
 
 export default function JobPreferencesForm() {
+  const router = useRouter(); 
   const { user, loading } = useUser();
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -107,7 +109,8 @@ export default function JobPreferencesForm() {
     } else {
       await createJobPreferences(preferences);
     }
-    console.log("Preferences saved!");
+    console.log("Preferences saved successfully:", preferences);
+    router.push("/dashboard")
   }
 
   return (
@@ -220,7 +223,7 @@ export default function JobPreferencesForm() {
 
       <button
         type="submit"
-        className="bg-brand text-white py-2 px-4 rounded hover:bg-brand-hover"
+        className="bg-brand text-white py-2 px-4 rounded hover:bg-brand-hover cursor-pointer transition-colors"
       >
         Save Preferences
       </button>
